@@ -5,8 +5,9 @@ const GlobalStyles = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 62.5%;
   }
 
   a {
@@ -18,6 +19,12 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  @media screen and (max-width: 500px) {
+    html {
+      font-size: 56.25%;
+    }
   }
 `
 
