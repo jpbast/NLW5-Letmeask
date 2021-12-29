@@ -1,3 +1,3 @@
-# Boilerplate
+# Let me ask
 
-Este boilerplate contém configurações predefinidas utilizando Next, Styled Components, Eslint e Prettier.
+Projeto proposto pela Rocketseat que está sendo desenvolvido
