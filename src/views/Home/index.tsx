@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import Button from '../../components/Button'
 import { colors } from '../../styles/theme'
-import { LoginWrapper } from './styles'
+import { HomeWrapper } from './styles'
 import { FiLogIn } from 'react-icons/fi'
 import { BsGoogle } from 'react-icons/bs'
 import Input from '../../components/Input'
 import router from 'next/router'
 
-const LoginView: React.FC = () => {
+const HomeView: React.FC = () => {
   const [room, setRoom] = useState<string>('')
 
   return (
-    <LoginWrapper>
+    <HomeWrapper>
       <section>
         <div>
           <h1>Toda pergunta tem uma resposta.</h1>
@@ -25,11 +25,7 @@ const LoginView: React.FC = () => {
             <BsGoogle size={25} />
             Crie sua sala com o Google
           </Button>
-          <div>
-            <div className="trace" />
-            <span>ou entre em uma sala</span>
-            <div className="trace" />
-          </div>
+          <div className="separator">ou entre em uma sala</div>
           <Input
             placeholder="Digite o código da sala"
             value={room}
@@ -45,8 +41,8 @@ const LoginView: React.FC = () => {
           </Button>
         </div>
       </section>
-    </LoginWrapper>
+    </HomeWrapper>
   )
 }
 
-export default LoginView
+export default HomeView

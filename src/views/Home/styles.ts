@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const LoginWrapper = styled.div`
+export const HomeWrapper = styled.div`
   width: 100%;
   height: 100vh;
   background-image: url('/images/logo.svg');
@@ -56,23 +56,25 @@ export const LoginWrapper = styled.div`
       div {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        flex-direction: row;
         width: 100%;
         opacity: 0.8;
         margin: 10px 0;
+        font-size: 1.6rem;
 
-        div.trace {
-          width: 100%;
-          height: 2px;
+        &::before {
+          content: '';
+          flex: 1;
+          height: 1px;
           background-color: ${(props) => props.theme.colors.gray};
+          margin-right: 16px;
         }
 
-        span {
-          font-size: 1.6rem;
-          color: ${(props) => props.theme.colors.gray};
-          position: relative;
-          width: 100%;
+        &::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background-color: ${(props) => props.theme.colors.gray};
+          margin-left: 16px;
         }
       }
     }

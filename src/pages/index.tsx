@@ -1,3 +1,7 @@
-export default function Home() {
-  return <div>Next Boilerplate</div>
+import HomeView from '../views/Home'
+
+const Home: React.FC = () => {
+  return <HomeView />
 }
+
+export default Home
