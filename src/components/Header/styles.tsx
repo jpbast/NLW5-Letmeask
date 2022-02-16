@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
   background-color: transparent;
@@ -52,5 +52,4 @@ export const HeaderWrapper = styled.header`
       font-weight: 500;
     }
   }
-  
-`
+`;

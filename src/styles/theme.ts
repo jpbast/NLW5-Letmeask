@@ -5,11 +5,11 @@ export const colors = {
   red: '#E73F5D',
   redDark: '#D73754',
   background: '#F8F8F8',
-  gray: '#A8A8B3'
-}
+  gray: '#A8A8B3',
+};
 
 const theme = {
-  colors
-}
+  colors,
+};
 
-export default theme
+export default theme;

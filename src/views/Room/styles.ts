@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const RoomWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.background};
   width: 100%;
-`
+`;
 
 export const Content = styled.div`
   max-width: 100rem;
@@ -27,10 +27,8 @@ export const Content = styled.div`
 
     h1 {
       font-size: 2.4rem;
-      
     }
   }
-  
 
   form {
     font-size: 1.6rem;
@@ -56,35 +54,34 @@ export const Content = styled.div`
       justify-content: space-between;
       margin-top: 1.5rem;
       & > span {
-      button {
-        color: ${(props) => props.theme.colors.primary};
-        text-decoration: underline;
-        transition: all 0.2s;
-        cursor: pointer;
-        background-color: transparent;
-        outline: none;
-        border: none;
-        padding: 0;
-        font-size: 1.6rem;
+        button {
+          color: ${(props) => props.theme.colors.primary};
+          text-decoration: underline;
+          transition: all 0.2s;
+          cursor: pointer;
+          background-color: transparent;
+          outline: none;
+          border: none;
+          padding: 0;
+          font-size: 1.6rem;
 
-        &:hover {
-          color: ${(props) => props.theme.colors.primaryDark};
+          &:hover {
+            color: ${(props) => props.theme.colors.primaryDark};
+          }
         }
       }
+      & > button {
+        width: 17rem;
+      }
     }
-    & > button {
-      width: 17rem;
-    }
-    }
-    
   }
-`
+`;
 export const QuestionsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: 3.2rem;
-`
+`;
 
 export const EmptyQuestions = styled.div`
   display: flex;
@@ -108,4 +105,4 @@ export const EmptyQuestions = styled.div`
     color: #737380;
     width: 31rem;
   }
-`
+`;

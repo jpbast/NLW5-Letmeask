@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const QuestionWrapper = styled.div<{ answering?: boolean; answered?: boolean }>`
   width: 100%;
@@ -6,16 +6,21 @@ export const QuestionWrapper = styled.div<{ answering?: boolean; answered?: bool
   padding: 1.4rem;
   font-size: 1.6rem;
 
-  ${({ answering, answered }) => answered ? css`
-      background-color: #DBDCDD;
-      box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
-  ` : answering ? css`
-      border: 1px solid #835AFD;
-      background-color: #F4F0FF;
-      box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.12);
-  ` : css`
-      background-color: white;
-  `}
+  ${({ answering, answered }) =>
+    answered
+      ? css`
+          background-color: #dbdcdd;
+          box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+        `
+      : answering
+      ? css`
+          border: 1px solid #835afd;
+          background-color: #f4f0ff;
+          box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.12);
+        `
+      : css`
+          background-color: white;
+        `}
 
   p {
     margin-bottom: 16px;
@@ -38,7 +43,7 @@ export const QuestionWrapper = styled.div<{ answering?: boolean; answered?: bool
       gap: 10px;
       align-items: center;
 
-      svg { 
+      svg {
         cursor: pointer;
         transition: all 0.2s;
 
@@ -73,8 +78,7 @@ export const QuestionWrapper = styled.div<{ answering?: boolean; answered?: bool
         &:hover {
           color: ${({ theme }) => theme.colors.primary};
         }
-
       }
     }
   }
-`
+`;

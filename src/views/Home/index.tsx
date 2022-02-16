@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import Button from '../../components/Button'
-import { colors } from '../../styles/theme'
-import { HomeWrapper } from './styles'
-import { FiLogIn } from 'react-icons/fi'
-import { BsGoogle } from 'react-icons/bs'
-import Input from '../../components/Input'
-import router from 'next/router'
-import { useAuth } from '../../providers/authProvider'
+import { useState } from 'react';
+import Button from '../../components/Button';
+import { colors } from '../../styles/theme';
+import { HomeWrapper } from './styles';
+import { FiLogIn } from 'react-icons/fi';
+import { BsGoogle } from 'react-icons/bs';
+import Input from '../../components/Input';
+import router from 'next/router';
+import { useAuth } from '../../providers/authProvider';
 
 const HomeView: React.FC = () => {
-  const [room, setRoom] = useState<string>('')
-  const { login } = useAuth()
+  const [room, setRoom] = useState<string>('');
+  const { login } = useAuth();
 
   return (
     <HomeWrapper>
@@ -44,7 +44,7 @@ const HomeView: React.FC = () => {
         </div>
       </section>
     </HomeWrapper>
-  )
-}
+  );
+};
 
-export default HomeView
+export default HomeView;

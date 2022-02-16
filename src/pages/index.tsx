@@ -1,7 +1,7 @@
-import HomeView from '../views/Home'
+import HomeView from '../views/Home';
 
 const Home: React.FC = () => {
-  return <HomeView />
-}
+  return <HomeView />;
+};
 
-export default Home
+export default Home;

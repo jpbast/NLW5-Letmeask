@@ -1,9 +1,9 @@
-import { FiCopy } from 'react-icons/fi'
-import { HeaderWrapper } from './styles'
-import CopyToClipboard from 'react-copy-to-clipboard'
-import axios from 'axios'
-import Button from '../Button'
-import { colors } from '../../styles/theme'
+import { FiCopy } from 'react-icons/fi';
+import { HeaderWrapper } from './styles';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import axios from 'axios';
+import Button from '../Button';
+import { colors } from '../../styles/theme';
 
 const Header: React.FC<{ roomId: string; isAdmin?: boolean }> = ({ roomId, isAdmin }) => {
   const deleteRoom = async () => {
@@ -11,12 +11,12 @@ const Header: React.FC<{ roomId: string; isAdmin?: boolean }> = ({ roomId, isAdm
       await axios.delete('/api/deleteMessage', {
         data: {
           roomId,
-        }
-      })
+        },
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   return (
     <HeaderWrapper>
@@ -36,9 +36,8 @@ const Header: React.FC<{ roomId: string; isAdmin?: boolean }> = ({ roomId, isAdm
           </Button>
         )}
       </div>
-      
     </HeaderWrapper>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

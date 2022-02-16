@@ -1,15 +1,18 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { database } from '../../services/firebase'
+import { NextApiRequest, NextApiResponse } from 'next';
+import { database, update, ref } from '../../services/firebase';
 
 const updateMessage = (req: NextApiRequest, res: NextApiResponse) => {
-  const { data: { roomId, questionId, ...updatedContent } } = req.body
+  const {
+    data: { roomId, questionId, ...updatedContent },
+  } = req.body;
 
-  const ref = database.ref(`rooms/${roomId}/questions/${questionId}`)
-  ref.update(updatedContent)
+  const dbRef = ref(database, `rooms/${roomId}/questions/${questionId}`);
+
+  update(dbRef, updatedContent)
     .then(() => res.status(200).json({ message: 'Question updated successfully' }))
-    .catch((error) => res.json({ error }))
-    
-  return 
-}
+    .catch((error) => res.json({ error }));
 
-export default updateMessage
+  return;
+};
+
+export default updateMessage;

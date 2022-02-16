@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const UserWrapper = styled.div<{ isDark?: boolean }>`
   display: flex;
@@ -32,4 +32,4 @@ export const UserWrapper = styled.div<{ isDark?: boolean }>`
     color: ${({ isDark }) => (isDark ? 'black' : 'rgb(0, 0, 0, 0.5)')};
     font-size: 1.6rem;
   }
-`
+`;

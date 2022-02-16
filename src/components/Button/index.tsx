@@ -1,13 +1,12 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React from 'react';
+import styled, { css } from 'styled-components';
 
-export interface ButtonProps
-  extends Omit<React.ComponentPropsWithoutRef<'button'>, 'type'> {
-  $background?: string
-  $type: 'primary' | 'secondary'
-  $color?: string
+export interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'type'> {
+  $background?: string;
+  $type: 'primary' | 'secondary';
+  $color?: string;
   htmlType?: React.ComponentPropsWithoutRef<'button'>['type'];
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 const ButtonWrapper = styled.button<ButtonProps>`
@@ -21,9 +20,7 @@ const ButtonWrapper = styled.button<ButtonProps>`
 
       &:not(:disabled):hover {
         background-color: ${props.theme.colors[
-          props.$background === props.theme.colors.primary
-            ? 'primaryDark'
-            : 'redDark'
+          props.$background === props.theme.colors.primary ? 'primaryDark' : 'redDark'
         ]};
       }
     `}
@@ -36,14 +33,10 @@ const ButtonWrapper = styled.button<ButtonProps>`
 
       &:not(:disabled):hover {
         border-color: ${props.theme.colors[
-          props.$background === props.theme.colors.primary
-            ? 'primaryDark'
-            : 'redDark'
+          props.$background === props.theme.colors.primary ? 'primaryDark' : 'redDark'
         ]};
         color: ${props.theme.colors[
-          props.$background === props.theme.colors.primary
-            ? 'primaryDark'
-            : 'redDark'
+          props.$background === props.theme.colors.primary ? 'primaryDark' : 'redDark'
         ]};
       }
     `}
@@ -63,10 +56,10 @@ const ButtonWrapper = styled.button<ButtonProps>`
     opacity: 0.7;
     cursor: not-allowed;
   }
-`
+`;
 
 const Button: React.FC<ButtonProps> = (props) => {
-  return <ButtonWrapper {...props}>{props.children}</ButtonWrapper>
-}
+  return <ButtonWrapper {...props}>{props.children}</ButtonWrapper>;
+};
 
-export default Button
+export default Button;

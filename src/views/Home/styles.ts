@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const HomeWrapper = styled.div`
   width: 100%;
@@ -35,7 +35,7 @@ export const HomeWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 1.6rem;
-    
+
     button {
       width: 100%;
     }
@@ -46,7 +46,7 @@ export const HomeWrapper = styled.div`
       margin-top: 2rem;
       font-size: 2.4rem;
     }
-    
+
     div {
       width: 45%;
       display: flex;
@@ -88,4 +88,4 @@ export const HomeWrapper = styled.div`
       }
     }
   }
-`
+`;

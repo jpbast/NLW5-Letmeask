@@ -1,7 +1,7 @@
-import NewRoomView from '../../views/NewRoom'
+import NewRoomView from '../../views/NewRoom';
 
 const NewRoom: React.FC = () => {
-  return <NewRoomView />
-}
+  return <NewRoomView />;
+};
 
-export default NewRoom
+export default NewRoom;

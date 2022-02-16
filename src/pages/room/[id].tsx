@@ -1,36 +1,72 @@
-import { GetServerSideProps } from 'next'
-import { auth, database, firebase, firebaseAdmin } from '../../services/firebase'
-import { Room, RoomFirebase } from '../../types/backend'
-import formatRoomData from '../../utils/formatRoomData'
-import RoomView from '../../views/Room'
+import React from 'react';
+import { GetServerSideProps } from 'next';
+import { database, ref, get } from '../../services/firebase';
+import nextCookies from 'next-cookies';
+import { firebaseAdmin } from '../../services/firebaseAdmin';
+import { Room, RoomFirebase, User } from '../../types/backend';
+import formatRoomData from '../../utils/formatRoomData';
+import RoomView from '../../views/Room';
+import { useAuth } from '../../providers/authProvider';
 
 export type RoomPageProps = {
-  room: Room
-}
+  room: Room;
+  user?: User;
+};
 
 const RoomPage: React.FC<RoomPageProps> = (props) => {
-  return <RoomView {...props} />
-}
+  const { setUser } = useAuth();
+  React.useEffect(() => {
+    if (props.user) {
+      setUser(props.user);
+    }
+  }, []);
+
+  return <RoomView {...props} />;
+};
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const roomId = ctx.params.id
-  const ref = database.ref(`rooms/${roomId}`)
-  const snapshot = await ref.once('value', (snapshot) => {
-    return snapshot
-  }, (err) => console.log(err))
+  const roomId = ctx.params.id;
+  const dbRef = ref(database, `rooms/${roomId}`);
+  const cookies = nextCookies(ctx);
+  const res = await get(dbRef)
+    .then(async (snapshot) => {
+      return snapshot.exists()
+        ? await firebaseAdmin
+            .auth()
+            .verifyIdToken(cookies.token || '')
+            .then((user) => {
+              return {
+                room: formatRoomData(snapshot.val() as RoomFirebase, roomId as string),
+                user: {
+                  name: user.name,
+                  email: user.email,
+                  picture: user.picture,
+                  id: user.uid,
+                } as User,
+              };
+            })
+            .catch(() => {
+              return {
+                room: formatRoomData(snapshot.val() as RoomFirebase, roomId as string),
+              };
+            })
+        : {
+            notFound: true,
+          };
+    })
+    .catch(() => {
+      return {
+        notFound: true,
+      };
+    });
 
-  // await firebaseAdmin.auth().verifyIdToken
-  console.log('cookie', ctx.req.headers.cookie)
-  if (snapshot.exists())
+  if (res['notFound'])
     return {
-      props: {
-        room: formatRoomData(snapshot.val() as RoomFirebase, roomId as string)
-      }
-    }
-
+      notFound: true,
+    };
   return {
-    notFound: true,
-  }
-}
+    props: res,
+  };
+};
 
-export default RoomPage
+export default RoomPage;

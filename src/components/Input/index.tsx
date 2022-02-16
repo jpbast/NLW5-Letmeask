@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const InputWrapper = styled.input`
   border-radius: 0.8rem;
@@ -14,12 +14,10 @@ const InputWrapper = styled.input`
     outline: none;
     border-color: ${(props) => props.theme.colors.primary};
   }
-`
+`;
 
-const Input: React.FC<Omit<React.ComponentPropsWithoutRef<'input'>, 'type'>> = (
-  props
-) => {
-  return <InputWrapper {...props} />
-}
+const Input: React.FC<Omit<React.ComponentPropsWithoutRef<'input'>, 'type'>> = (props) => {
+  return <InputWrapper {...props} />;
+};
 
-export default Input
+export default Input;
