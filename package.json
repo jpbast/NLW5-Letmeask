@@ -8,7 +8,9 @@
     "start": "CHOKIDAR_USEPOLLING=true next start"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "firebase": "^8.10.0",
+    "firebase-admin": "^10.0.2",
     "next": "10.2.0",
     "react": "17.0.2",
     "react-copy-to-clipboard": "^5.0.4",

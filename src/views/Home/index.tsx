@@ -6,9 +6,11 @@ import { FiLogIn } from 'react-icons/fi'
 import { BsGoogle } from 'react-icons/bs'
 import Input from '../../components/Input'
 import router from 'next/router'
+import { useAuth } from '../../providers/authProvider'
 
 const HomeView: React.FC = () => {
   const [room, setRoom] = useState<string>('')
+  const { login } = useAuth()
 
   return (
     <HomeWrapper>
@@ -21,7 +23,7 @@ const HomeView: React.FC = () => {
       <section>
         <div>
           <img src="/images/logo.svg" alt="Logo do projeto" />
-          <Button $background={colors.red} $type="primary">
+          <Button $background={colors.red} $type="primary" onClick={() => login('/room/new')}>
             <BsGoogle size={25} />
             Crie sua sala com o Google
           </Button>

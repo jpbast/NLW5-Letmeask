@@ -13,11 +13,18 @@ export const UserWrapper = styled.div<{ isDark?: boolean }>`
     background-color: ${(props) => props.theme.colors.primary};
     position: relative;
 
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 100%;
+    }
+
     svg {
       position: absolute;
       color: white;
       left: 50%;
-      transform: translateX(-50%);
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 

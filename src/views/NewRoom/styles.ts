@@ -52,6 +52,16 @@ export const NewRoomWrapper = styled.div`
       img {
         margin-bottom: 16px;
       }
+
+      span {
+        font-size: 1.4rem;
+        color: ${({ theme }) => theme.colors.gray};
+
+        a {
+          text-decoration: underline;
+          color: ${({ theme }) => theme.colors.primary};
+        }
+      }
     }
   }
 `

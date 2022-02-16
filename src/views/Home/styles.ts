@@ -35,12 +35,18 @@ export const HomeWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 1.6rem;
+    
+    button {
+      width: 100%;
+    }
+
     h1 {
       font-weight: 700;
       color: black;
       margin-top: 2rem;
       font-size: 2.4rem;
     }
+    
     div {
       width: 45%;
       display: flex;
@@ -53,17 +59,19 @@ export const HomeWrapper = styled.div`
         margin-bottom: 16px;
       }
 
-      div {
+      div.separator {
         display: flex;
-        align-items: center;
+        flex-direction: row;
         width: 100%;
         opacity: 0.8;
         margin: 10px 0;
         font-size: 1.6rem;
+        color: ${(props) => props.theme.colors.gray};
 
         &::before {
           content: '';
           flex: 1;
+          opacity: 0.8;
           height: 1px;
           background-color: ${(props) => props.theme.colors.gray};
           margin-right: 16px;
@@ -72,6 +80,7 @@ export const HomeWrapper = styled.div`
         &::after {
           content: '';
           flex: 1;
+          opacity: 0.8;
           height: 1px;
           background-color: ${(props) => props.theme.colors.gray};
           margin-left: 16px;

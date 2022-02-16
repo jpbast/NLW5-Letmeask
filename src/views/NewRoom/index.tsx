@@ -4,9 +4,13 @@ import { colors } from '../../styles/theme'
 import Input from '../../components/Input'
 import Link from 'next/link'
 import { NewRoomWrapper } from './styles'
+import axios from 'axios'
+import { useAuth } from '../../providers/authProvider'
+import router from 'next/router'
 
 const NewRoomView: React.FC = () => {
-  const [newRoom, setNewRoom] = useState<string>('')
+  const [roomName, setRoomName] = useState<string>('')
+  const { user } = useAuth()
 
   return (
     <NewRoomWrapper>
@@ -22,10 +26,22 @@ const NewRoomView: React.FC = () => {
           <h1>Crie uma nova sala</h1>
           <Input
             placeholder="Nome da sala"
-            value={newRoom}
-            onChange={(e) => setNewRoom(e.target.value)}
+            value={roomName}
+            onChange={(e) => setRoomName(e.target.value)}
           />
-          <Button $background={colors.primary} $type="primary">
+          <Button $background={colors.primary} $type="primary" onClick={async () => {
+            try {
+              const { data } = await axios.post('/api/createRoom', {
+                data: {
+                  title: roomName,
+                  userId: user?.id,
+                }
+              })
+              if (data) router.push(`/room/${data.roomId}`)
+            } catch (err) {
+              console.log(err)
+            }
+          }}>
             Criar sala
           </Button>
           <span>Quer entrar em uma sala já existente? <Link href="#"><a>Clique aqui</a></Link></span>
