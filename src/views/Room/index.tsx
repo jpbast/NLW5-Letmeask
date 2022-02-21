@@ -16,15 +16,17 @@ const RoomView: React.FC<RoomPageProps> = (props) => {
   const [room, setRoom] = React.useState<Room>(props.room);
   const [message, setMessage] = React.useState<string>('');
   const { login, user: clientUser } = useAuth();
+
   const user = props.user || clientUser;
   const isAdmin = React.useMemo(() => props.room.userId === user?.id, [props.room, user]);
+
   React.useEffect(() => {
     const dbRef = ref(database, `rooms/${props.room.id}`);
     if (dbRef) {
       onValue(
         dbRef,
         (snapshot) => {
-          setRoom(formatRoomData(snapshot.val(), props.room.id));
+          if (snapshot.exists()) setRoom(formatRoomData(snapshot.val(), props.room.id));
         },
         (err) => console.log(err),
       );

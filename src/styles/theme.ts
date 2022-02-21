@@ -8,8 +8,16 @@ export const colors = {
   gray: '#A8A8B3',
 };
 
+const breakpoints = {
+  extraSmall: '600px',
+  small: '768px',
+  medium: '992px',
+  large: '1200px',
+};
+
 const theme = {
   colors,
+  breakpoints,
 };
 
 export default theme;

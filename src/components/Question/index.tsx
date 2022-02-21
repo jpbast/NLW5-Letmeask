@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { BiMessage, BiTrashAlt } from 'react-icons/bi';
@@ -5,6 +6,7 @@ import { FiThumbsUp } from 'react-icons/fi';
 import { useAuth } from '../../providers/authProvider';
 import User from '../User';
 import { QuestionWrapper } from './styles';
+import Modal from '../Modal';
 
 type QuestionProps = {
   message: string;
@@ -27,6 +29,7 @@ const Question: React.FC<QuestionProps> = ({
   answering,
   answered,
 }) => {
+  const [showModal, setShowModal] = React.useState<boolean>(false);
   const { user } = useAuth();
 
   const updateMessage = async (data: {
@@ -63,13 +66,13 @@ const Question: React.FC<QuestionProps> = ({
   return (
     <QuestionWrapper answered={answered} answering={answering}>
       <p>{message}</p>
-      <div>
+      <div className="actions">
         <User name={userName} />
         {userId === user?.id ? (
           <div className="admin-icons">
             <AiOutlineCheckCircle size={20} onClick={() => updateMessage({ answered: true })} />
             <BiMessage size={20} onClick={() => updateMessage({ answering: true })} />
-            <BiTrashAlt size={20} onClick={() => deleteMessage()} />
+            <BiTrashAlt size={20} onClick={() => setShowModal(true)} />
           </div>
         ) : (
           <span>
@@ -78,6 +81,18 @@ const Question: React.FC<QuestionProps> = ({
           </span>
         )}
       </div>
+      <Modal
+        title="Excluir pergunta"
+        okText="Sim, excluir"
+        onOk={() => {
+          deleteMessage();
+          setShowModal(false);
+        }}
+        onClose={() => setShowModal(false)}
+        visible={showModal}
+      >
+        Tem certeza que você deseja excluir esta pergunta?
+      </Modal>
     </QuestionWrapper>
   );
 };

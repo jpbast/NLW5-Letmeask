@@ -14,12 +14,13 @@ const NewRoomView: React.FC = () => {
 
   return (
     <NewRoomWrapper>
-      <section>
+      <aside>
         <div>
+          <img src="/images/illustration.svg" alt="" />
           <h1>Toda pergunta tem uma resposta.</h1>
           <p>Aprenda e compartilhe conhecimento com outras pessoas</p>
         </div>
-      </section>
+      </aside>
       <section>
         <div>
           <img src="/images/logo.svg" alt="Logo do projeto" />

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from '../../styles/media';
 
 export const RoomWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.background};
@@ -6,12 +7,26 @@ export const RoomWrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  max-width: 100rem;
+  padding: 0 16rem;
   margin: auto;
   background-color: transparent;
+
+  ${media('large')} {
+    padding: 0 8rem;
+  }
+
+  ${media('small')} {
+    padding: 0 4rem;
+  }
+
+  ${media('extraSmall')} {
+    padding: 0 2rem;
+  }
+
   & > div:first-child {
     display: flex;
-    gap: 1.6rem;
+    flex-wrap: wrap;
+    column-gap: 1.6rem;
     align-items: center;
     margin-top: 5rem;
     margin-bottom: 2.4rem;

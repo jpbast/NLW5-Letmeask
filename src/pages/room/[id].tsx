@@ -6,7 +6,6 @@ import { firebaseAdmin } from '../../services/firebaseAdmin';
 import { Room, RoomFirebase, User } from '../../types/backend';
 import formatRoomData from '../../utils/formatRoomData';
 import RoomView from '../../views/Room';
-import { useAuth } from '../../providers/authProvider';
 
 export type RoomPageProps = {
   room: Room;
@@ -14,13 +13,6 @@ export type RoomPageProps = {
 };
 
 const RoomPage: React.FC<RoomPageProps> = (props) => {
-  const { setUser } = useAuth();
-  React.useEffect(() => {
-    if (props.user) {
-      setUser(props.user);
-    }
-  }, []);
-
   return <RoomView {...props} />;
 };
 
@@ -28,7 +20,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const roomId = ctx.params.id;
   const dbRef = ref(database, `rooms/${roomId}`);
   const cookies = nextCookies(ctx);
-  const res = await get(dbRef)
+  const res:
+    | {
+        room: Room;
+        user?: User;
+      }
+    | {
+        notFound: boolean;
+      } = await get(dbRef)
     .then(async (snapshot) => {
       return snapshot.exists()
         ? await firebaseAdmin
@@ -64,6 +63,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       notFound: true,
     };
+
+  if (!(res as { user?: User }).user)
+    ctx.res.setHeader('Set-Cookie', [
+      'token=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+      'user=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+    ]);
+
   return {
     props: res,
   };

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import media from '../../styles/media';
 
 export interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'type'> {
   $background?: string;
@@ -15,13 +16,11 @@ const ButtonWrapper = styled.button<ButtonProps>`
     css`
       background-color: ${props.$background};
       color: white;
-      transition: all 0.2s;
+      transition: filter 0.2s;
       border: none;
 
       &:not(:disabled):hover {
-        background-color: ${props.theme.colors[
-          props.$background === props.theme.colors.primary ? 'primaryDark' : 'redDark'
-        ]};
+        filter: brightness(0.8);
       }
     `}
   ${(props) =>
@@ -55,6 +54,13 @@ const ButtonWrapper = styled.button<ButtonProps>`
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+  }
+
+  ${media('medium')} {
+    height: 5rem;
+    svg {
+      width: 16px;
+    }
   }
 `;
 

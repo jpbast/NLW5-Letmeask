@@ -8,6 +8,7 @@ import NProgress from 'nprogress';
 import router from 'next/router';
 
 import 'nprogress/nprogress.css';
+import Head from 'next/head';
 
 type Props = {
   user?: User;
@@ -22,6 +23,9 @@ const App = (props: AppProps & Props) => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <AuthProvider>
         <GlobalStyles />
         <Component {...pageProps} />

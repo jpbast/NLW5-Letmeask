@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import media from './media';
 
 const GlobalStyles = createGlobalStyle`
   html,
@@ -9,6 +10,14 @@ const GlobalStyles = createGlobalStyle`
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 62.5%;
     background-color: ${({ theme }) => theme.colors.background};
+
+    ${media('medium')} {
+      font-size: 50%
+    }
+
+    ${media('small')} {
+      font-size: 40%;
+    }
   }
 
   a {
@@ -20,12 +29,6 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-
-  @media screen and (max-width: 500px) {
-    html {
-      font-size: 56.25%;
-    }
   }
 `;
 

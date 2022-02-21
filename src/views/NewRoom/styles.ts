@@ -1,21 +1,47 @@
 import styled from 'styled-components';
+import media from '../../styles/media';
 
 export const NewRoomWrapper = styled.div`
-  width: 100%;
   height: 100vh;
-  background-image: url('/images/logo.svg');
-  background-repeat: no-repeat;
   display: grid;
-  grid-template-columns: 0.42fr 0.58fr;
+  grid-template-columns: 0.44fr 0.56fr;
 
-  section:first-child {
+  ${media('medium')} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside {
     background-color: ${({ theme }) => theme.colors.primary};
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    ${media('medium')} {
+      padding: 4.8rem;
+    }
+
     div {
       width: 80%;
+
+      ${media('medium')} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        img {
+          width: 200px;
+        }
+      }
+
+      ${media('small')} {
+        img {
+          width: 150px;
+        }
+      }
+
       h1 {
         font-size: 3.6rem;
         line-height: 1.2;
@@ -28,21 +54,30 @@ export const NewRoomWrapper = styled.div`
     }
   }
 
-  section:last-child {
+  section {
     background-color: ${({ theme }) => theme.colors.background};
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 1.6rem;
+    padding: 1.6rem;
+    width: 100%;
+
+    ${media('medium')} {
+      padding: 4.8rem;
+    }
+
     h1 {
       font-weight: 700;
       color: black;
       margin-top: 2rem;
       font-size: 2.4rem;
     }
+
     div {
-      width: 45%;
+      max-width: 360px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,6 +97,10 @@ export const NewRoomWrapper = styled.div`
           color: ${({ theme }) => theme.colors.primary};
         }
       }
+    }
+
+    button {
+      width: 100%;
     }
   }
 `;

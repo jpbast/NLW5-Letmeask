@@ -2,9 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { database, ref, remove } from '../../services/firebase';
 
 const deleteRoom = (req: NextApiRequest, res: NextApiResponse) => {
-  const {
-    data: { roomId },
-  } = req.body;
+  const { roomId } = req.body;
 
   const dbRef = ref(database, `rooms/${roomId}`);
   remove(dbRef)

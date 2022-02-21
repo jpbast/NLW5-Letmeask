@@ -26,8 +26,10 @@ export const QuestionWrapper = styled.div<{ answering?: boolean; answered?: bool
     margin-bottom: 16px;
   }
 
-  div {
+  div.actions {
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 6px;
     align-items: center;
     justify-content: space-between;
     color: rgb(0, 0, 0, 0.5);
